@@ -1,0 +1,4 @@
+PORT = 1234
+HEADER = 64
+DECODE_FORMAT = "utf-8"
+DISCONNECT_MESSAGE = "Disconnect"
