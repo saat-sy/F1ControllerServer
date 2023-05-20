@@ -2,6 +2,7 @@ import socket
 import threading
 from constants import *
 from client_handler import Client
+import pyvjoy
 
 IP = ''
 ADDRESS = (IP, PORT)
@@ -13,11 +14,17 @@ server.listen(10)
 print(server)
 print(socket.gethostname())
 
-while True:
-    connection, address = server.accept()
-    client = Client(connection, address)
+j = pyvjoy.VJoyDevice(1)
+j.reset()
 
-    thread = threading.Thread(target=client.recieve_messages)
-    thread.start()
+try:
+    while True:
+        connection, address = server.accept()
+        client = Client(connection, address, j)
 
-    print(f'Active connections = {threading.active_count() - 1}')
+        thread = threading.Thread(target=client.recieve_messages)
+        thread.start()
+
+        print(f'Active connections = {threading.active_count() - 1}')
+except KeyboardInterrupt:
+    print("Exit")

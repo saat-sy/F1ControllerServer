@@ -2,3 +2,14 @@ PORT = 1234
 HEADER = 64
 DECODE_FORMAT = "utf-8"
 DISCONNECT_MESSAGE = "Disconnect"
+ACC, BRAKE, G_UP, G_DOWN = 1, 2, 3, 4
+BUTTON_KEY = "B"
+ORIENTATION_KEY = "O"
+MIN_BUTTON_SYNTAX_LEN = 5
+X_Y_MIN = 0
+X_Y_MAX = 32768
+GYRO_VAL_MIN = -1.25
+GYRO_VAL_MAX = 1.25
+
+# Button syntax:
+# B, Button_Num, 1/0 - State
