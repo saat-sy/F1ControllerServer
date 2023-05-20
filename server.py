@@ -8,23 +8,20 @@ IP = ''
 ADDRESS = (IP, PORT)
 print(IP)
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server.bind(ADDRESS)
-server.listen(10)
 print(server)
 print(socket.gethostname())
 
 j = pyvjoy.VJoyDevice(1)
 j.reset()
 
+client = Client(j)
+
 try:
     while True:
-        connection, address = server.accept()
-        client = Client(connection, address, j)
-
-        thread = threading.Thread(target=client.recieve_messages)
-        thread.start()
-
-        print(f'Active connections = {threading.active_count() - 1}')
+        data, addr = server.recvfrom(HEADER)
+        data = data.decode(DECODE_FORMAT)
+        client.recieve_message(data)
 except KeyboardInterrupt:
     print("Exit")

@@ -34,6 +34,5 @@ class Buttons:
             if button.pressed:
                 activeButtons += pow(2, button.id)
 
-        print(activeButtons)
         self.vjoyDevice.data.lButtons = activeButtons
         self.vjoyDevice.update()
