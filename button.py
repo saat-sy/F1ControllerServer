@@ -17,7 +17,9 @@ class Buttons:
             Button(ACC),
             Button(BRAKE),
             Button(G_UP),
-            Button(G_DOWN)
+            Button(G_DOWN),
+            Button(KERS),
+            Button(DRS)
         ]
         self.vjoyDevice = j
 
