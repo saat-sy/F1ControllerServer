@@ -10,7 +10,7 @@ X_Y_MIN = 0
 X_Y_MAX = 32768
 GYRO_VAL_MIN = -1.5
 GYRO_VAL_MAX = 1.5
-SKIP_THRESHOLD = 4 # When the value jumps to 4 directly
+SKIP_THRESHOLD = 3 # When the value jumps to 4 directly
 
 # Button syntax:
 # B, Button_Num, 1/0 - State
