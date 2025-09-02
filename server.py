@@ -22,6 +22,6 @@ try:
     while True:
         data, addr = server.recvfrom(HEADER)
         data = data.decode(DECODE_FORMAT)
-        client.recieve_message(data)
+        client.receive_message(data)
 except KeyboardInterrupt:
     print("Exit")

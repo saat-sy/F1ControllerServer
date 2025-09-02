@@ -7,7 +7,7 @@ class Client:
         self.vjoyDevice = j
         self.buttons = Buttons(j)
 
-    def recieve_message(self, message):
+    def receive_message(self, message):
         if (message):
             if (message == DISCONNECT_MESSAGE):
                 print(f"Disconnected: {self.address}")
@@ -26,8 +26,14 @@ class Client:
             messages = message.split(',')
             try:
                 self.updateOrientation(float(messages[1]))
+                self.updateAcceleration(float(messages[-2]))
             except:
-                print(message)
+                print(message + "Error")
+
+    def updateAcceleration(self, value):
+        scaled_value = int(value * 32768)
+        self.vjoyDevice.data.wAxisZ = scaled_value
+        self.vjoyDevice.update()
 
     def updateOrientation(self, value):
         # Value between -1.5 and 1.5

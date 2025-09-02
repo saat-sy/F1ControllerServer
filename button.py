@@ -14,7 +14,6 @@ class Button:
 class Buttons:
     def __init__(self, j: VJoyDevice) -> None:
         self.buttons: List[Button] = [
-            Button(ACC),
             Button(BRAKE),
             Button(G_UP),
             Button(G_DOWN),
