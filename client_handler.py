@@ -37,6 +37,12 @@ class Client:
 
     def updateOrientation(self, value):
         # Value between -1.5 and 1.5
+
+        if value > 3:
+            value = value - CONVERSION_THRESHOLD
+
+        print(value)
+
         if value >= GYRO_VAL_MAX and value < SKIP_THRESHOLD:
             x_value = X_Y_MIN
             y_value = X_Y_MAX

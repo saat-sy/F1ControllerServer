@@ -8,9 +8,15 @@ ORIENTATION_KEY = "O"
 MIN_BUTTON_SYNTAX_LEN = 5
 X_Y_MIN = 0
 X_Y_MAX = 32768
-GYRO_VAL_MIN = -1.5
-GYRO_VAL_MAX = 1.5
-SKIP_THRESHOLD = 3 # When the value jumps to 4 directly
+
+# Gyro values
+# 0 - 3 --> 0 - 3
+# 3 - 4 and -1.5 - 0 --> 0 - -3 
+
+GYRO_VAL_MIN = -3
+GYRO_VAL_MAX = 3
+SKIP_THRESHOLD = 4 # When the value jumps to 4 directly
+CONVERSION_THRESHOLD = 6.27
 
 # Button syntax:
 # B, Button_Num, 1/0 - State
