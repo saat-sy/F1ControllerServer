@@ -1,5 +1,4 @@
 import socket
-import threading
 from constants import *
 from client_handler import Client
 import pyvjoy
@@ -10,18 +9,23 @@ print(IP)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server.bind(ADDRESS)
-print(server)
-print(socket.gethostname())
+print(f"Server {socket.gethostname()} started on port {PORT}")
 
-j = pyvjoy.VJoyDevice(1)
-j.reset()
-
-client = Client(j)
+client = {}
+vjoy_device_index = 1
 
 try:
     while True:
         data, addr = server.recvfrom(HEADER)
         data = data.decode(DECODE_FORMAT)
-        client.receive_message(data)
+
+        if addr not in client:
+            print(f"New connection from {addr}")
+            j = pyvjoy.VJoyDevice(vjoy_device_index)
+            j.reset()
+            client[addr] = Client(j)
+            vjoy_device_index += 1
+
+        client[addr].receive_message(data)
 except KeyboardInterrupt:
     print("Exit")

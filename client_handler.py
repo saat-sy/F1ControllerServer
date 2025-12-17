@@ -10,7 +10,7 @@ class Client:
     def receive_message(self, message):
         if (message):
             if (message == DISCONNECT_MESSAGE):
-                print(f"Disconnected: {self.address}")
+                print(f"Disconnected")
 
             self.process(message)
 
