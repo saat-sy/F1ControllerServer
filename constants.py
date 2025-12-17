@@ -13,10 +13,11 @@ X_Y_MAX = 32768
 # 0 - 3 --> 0 - 3
 # 3 - 4 and -1.5 - 0 --> 0 - -3 
 
-GYRO_VAL_MIN = -3
-GYRO_VAL_MAX = 3
+GYRO_VAL_MIN = -2
+GYRO_VAL_MAX = 2
 SKIP_THRESHOLD = 4 # When the value jumps to 4 directly
 CONVERSION_THRESHOLD = 6.27
+HORIZONTAL_BIAS = 0.03
 
 # Button syntax:
 # B, Button_Num, 1/0 - State

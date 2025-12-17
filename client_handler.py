@@ -10,7 +10,7 @@ class Client:
     def receive_message(self, message):
         if (message):
             if (message == DISCONNECT_MESSAGE):
-                print(f"Disconnected")
+                print(f"Disconnected: {self.address}")
 
             self.process(message)
 
@@ -38,10 +38,10 @@ class Client:
     def updateOrientation(self, value):
         # Value between -1.5 and 1.5
 
+        value = value + HORIZONTAL_BIAS
+
         if value > 3:
             value = value - CONVERSION_THRESHOLD
-
-        print(value)
 
         if value >= GYRO_VAL_MAX and value < SKIP_THRESHOLD:
             x_value = X_Y_MIN
